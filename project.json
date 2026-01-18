@@ -1,0 +1,78 @@
+{
+	"approved" : true,
+	"contentrating" : "Everyone",
+	"description" : "This desktop picture changes throughout the day, based on your location.\n--------------------------------------------------------------------------------\nTransplanted macOS 10.14 Mojave Dynamic Wallpaper (Mojave)\n5K Resolution (5120 x 2880)\nBoth dynamic mode & static mode are supported\nDynamic mode:\n - Image changes according to sunrise and sunset time with animation\n - Sunrise and sunset time can be automatically fetched from internet or set manually\n - Animation duration is adjustable\nStatic mode:\n - All 16 images available\n--------------------------------------------------------------------------------\nNotes: \n - Internet-based location detection might not be functional under some network conditions and in some regions\n- To make your own dynamic wallpaper, visit github page for codes: https://github.com/Yaindrop/DynamicWallpaper",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"custombool" : 
+			{
+				"text" : "Static Image Mode",
+				"type" : "bool",
+				"value" : false
+			},
+			"custombool2" : 
+			{
+				"text" : "Use Internet-based Location",
+				"type" : "bool",
+				"value" : true
+			},
+			"customint" : 
+			{
+				"max" : 16,
+				"min" : 1,
+				"text" : "Static Image Number",
+				"type" : "slider",
+				"value" : 1
+			},
+			"customint2" : 
+			{
+				"max" : 8,
+				"min" : 4,
+				"text" : "Sunrise At (A.M.)",
+				"type" : "slider",
+				"value" : 7
+			},
+			"customint3" : 
+			{
+				"max" : 8,
+				"min" : 4,
+				"text" : "Sunset At (P.M.)",
+				"type" : "slider",
+				"value" : 6
+			},
+			"customint4" : 
+			{
+				"max" : 10,
+				"min" : 0,
+				"text" : "Animation Duration (s)",
+				"type" : "slider",
+				"value" : 2
+			},
+			"customint5" : 
+			{
+				"max" : 60,
+				"min" : 1,
+				"text" : "Update Interval (s)",
+				"type" : "slider",
+				"value" : 10
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0.43137254901960786 1"
+			}
+		}
+	},
+	"monetization" : false,
+	"preview" : "preview.gif",
+	"tags" : [ "Nature" ],
+	"title" : "Mojave",
+	"type" : "web",
+	"visibility" : "public",
+	"workshopid" : "1545776827"
+}
