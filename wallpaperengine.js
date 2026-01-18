@@ -26,6 +26,16 @@ window.wallpaperPropertyListener = {
 			if (!dwc.initialized) dwc.initialize();
 			else dwc.applyProps("customint3");
 		}
+		if (properties.customint6) {
+			dwc.prop.fixedLat = properties.customint6.value / 100;
+			if (!dwc.initialized) dwc.initialize();
+			else dwc.applyProps("customint6");
+		}
+		if (properties.customint7) {
+			dwc.prop.fixedLng = properties.customint7.value / 100;
+			if (!dwc.initialized) dwc.initialize();
+			else dwc.applyProps("customint7");
+		}
 		if (properties.customint4) {
 			dwc.prop.aniDuration = properties.customint4.value;
 			if (!dwc.initialized) dwc.initialize();

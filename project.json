@@ -15,7 +15,7 @@
 			},
 			"custombool2" : 
 			{
-				"text" : "Use Internet-based Location",
+				"text" : "Use Fixed Location (Offline)",
 				"type" : "bool",
 				"value" : true
 			},
@@ -42,6 +42,22 @@
 				"text" : "Sunset At (P.M.)",
 				"type" : "slider",
 				"value" : 6
+			},
+			"customint6" : 
+			{
+				"max" : 9000,
+				"min" : -9000,
+				"text" : "Fixed Latitude (x100)",
+				"type" : "slider",
+				"value" : 3057
+			},
+			"customint7" : 
+			{
+				"max" : 18000,
+				"min" : -18000,
+				"text" : "Fixed Longitude (x100)",
+				"type" : "slider",
+				"value" : 10407
 			},
 			"customint4" : 
 			{
