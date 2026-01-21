@@ -26,6 +26,8 @@ window.dynamicWPControl = {
 	updateTimer: null,
 	preload: [],
 	imgNo: 8,
+	layers: null,
+	activeLayerIndex: 0,
 	lastSunCalcKey: null,
 
 	isNumber: function(value) {
@@ -125,9 +127,38 @@ window.dynamicWPControl = {
 		this.calcTimeCycle();
 	},
 
+	setupLayers: function() {
+		if (this.layers) return;
+		var layerA = document.getElementById("bg-a");
+		var layerB = document.getElementById("bg-b");
+		if (!layerA || !layerB) return;
+		this.layers = [layerA, layerB];
+		this.activeLayerIndex = 0;
+		layerA.style.backgroundImage = "url('img/" + this.imgNo + ".png')";
+		layerA.classList.add("is-active");
+		layerB.classList.remove("is-active");
+	},
+
 	// Apply new image with number n
 	applyImg: function(n) {
-		document.body.style.backgroundImage = "url('img/" + n + ".png')";
+		if (!this.layers) this.setupLayers();
+		if (!this.layers) {
+			document.body.style.backgroundImage = "url('img/" + n + ".png')";
+			this.imgNo = n;
+			return;
+		}
+		var nextIndex = this.activeLayerIndex === 0 ? 1 : 0;
+		var nextLayer = this.layers[nextIndex];
+		var currentLayer = this.layers[this.activeLayerIndex];
+		var img = new Image();
+		var self = this;
+		img.onload = function() {
+			nextLayer.style.backgroundImage = "url('img/" + n + ".png')";
+			nextLayer.classList.add("is-active");
+			currentLayer.classList.remove("is-active");
+			self.activeLayerIndex = nextIndex;
+		};
+		img.src = "img/" + n + ".png";
 		this.imgNo = n;
 	},
 
@@ -223,7 +254,7 @@ window.dynamicWPControl = {
 
 	// Apply properties to adjust control status
 	applyProps: function(option) {
-		if (!option || option == "customint4") document.body.style.transition = "background-image " + this.prop.aniDuration + "s ease-out";
+		if (!option || option == "customint4") document.body.style.setProperty("--bg-fade-duration", this.prop.aniDuration + "s");
 		if (!option || option == "custombool2" || option == "customint2" || option == "customint3" || option == "customint6" || option == "customint7") this.updateTimeCircle();
 		if (!option || option == "custombool") this[this.prop.staticMode ? "stopUpdate" : "startUpdate"]();
 		if (!option || option == "customint") if (this.prop.staticMode) this.update();
@@ -240,6 +271,7 @@ window.dynamicWPControl = {
 			&& (this.prop.updateInt !== null);
 		if (!propLoaded || this.initialized) return;
 		this.applyProps();
+		this.setupLayers();
 		for (var i = 1; i <= this.imgCount; i ++) {
 			var img = new Image();
 			img.src = "img/" + i + ".png";
